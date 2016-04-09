@@ -191,6 +191,7 @@
     if ([oldTag isEqualToString:tag]) {
       [_tags removeObject:oldTag];
       [self reloadTagSubviews];
+      return;
     }
   }
  
