@@ -14,7 +14,7 @@
 
 - (void)tagsControl:(TLTagsControl *)tagsControl tappedAtIndex:(NSInteger)index;
 - (void)tagsControl:(TLTagsControl *)tagsControl textDidChange:(NSString *)newText;
-- (void)tagsControl:(TLTagsControl *)tagsControl deleteTappedForTag:(NSString *)tag;
+- (void)tagsControl:(TLTagsControl *)tagsControl deleteTappedForTag:(NSObject *)tag;
 
 - (NSString *)tagsControl:(TLTagsControl *)tagsConrol titleForTag:(NSObject *)item;
 
@@ -44,8 +44,8 @@ typedef NS_ENUM(NSUInteger, TLTagsControlMode) {
 
 - (id)initWithFrame:(CGRect)frame andTags:(NSArray *)tags withTagsControlMode:(TLTagsControlMode)mode delegate:(NSObject<TLTagsControlDelegate> *)delegate;
 
-- (void)addTag:(NSString *)tag;
-- (void)removeTag:(NSString *)tag;
+- (void)addTag:(NSObject *)tag;
+- (void)removeTag:(NSObject *)tag;
 //- (void)removeTagAtIndex:(NSInteger)index;
 - (void)reloadTagSubviews;
 
