@@ -165,7 +165,7 @@
 //            return;
 //        }
 //    }
-  
+    tagInputField_.text = @"";
     [_tags addObject:tag];
     [self reloadTagSubviews];
     
