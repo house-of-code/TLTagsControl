@@ -35,6 +35,7 @@ typedef NS_ENUM(NSUInteger, TLTagsControlMode) {
 - (id)initWithFrame:(CGRect)frame andTags:(NSArray *)tags withTagsControlMode:(TLTagsControlMode)mode;
 
 - (void)addTag:(NSString *)tag;
+- (void)removeTag:(NSString *)tag;
 - (void)reloadTagSubviews;
 
 @end

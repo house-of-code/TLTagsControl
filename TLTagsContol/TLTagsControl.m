@@ -184,6 +184,16 @@
     self.contentOffset = offset;
 }
 
+- (void)removeTag:(NSString *)tag {
+  for (NSString *oldTag in _tags) {
+    if ([oldTag isEqualToString:tag]) {
+      [_tags removeObject:oldTag];
+      [self reloadTagSubviews];
+    }
+  }
+ 
+}
+
 - (void)reloadTagSubviews {
     
     for (UIView *view in tagSubviews_) {
