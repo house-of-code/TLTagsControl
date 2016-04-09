@@ -13,6 +13,8 @@
 @protocol TLTagsControlDelegate <NSObject>
 
 - (void)tagsControl:(TLTagsControl *)tagsControl tappedAtIndex:(NSInteger)index;
+- (void)tagsControl:(TLTagsControl *)tagsControl textDidChange:(NSString *)newText;
+- (void)tagsControl:(TLTagsControl *)tagsControl deleteTappedForTag:(NSString *)tag;
 
 @end
 
@@ -36,6 +38,7 @@ typedef NS_ENUM(NSUInteger, TLTagsControlMode) {
 
 - (void)addTag:(NSString *)tag;
 - (void)removeTag:(NSString *)tag;
+//- (void)removeTagAtIndex:(NSInteger)index;
 - (void)reloadTagSubviews;
 
 @end

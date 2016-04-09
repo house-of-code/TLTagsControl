@@ -81,6 +81,8 @@
     tagInputField_.font = [UIFont fontWithName:@"HelveticaNeue" size:14];
     tagInputField_.placeholder = @"tag";
     tagInputField_.autocorrectionType = UITextAutocorrectionTypeNo;
+    [tagInputField_ addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+
     
     if (_mode == TLTagsControlModeEdit) {
         [self addSubview:tagInputField_];
@@ -298,10 +300,11 @@
 - (void)deleteTagButton:(UIButton *)sender {
     UIView *view = sender.superview;
     [view removeFromSuperview];
-    
+//
     NSInteger index = [tagSubviews_ indexOfObject:view];
-    [_tags removeObjectAtIndex:index];
-    [self reloadTagSubviews];
+//    [_tags removeObjectAtIndex:index];
+//    [self reloadTagSubviews];
+  [tapDelegate tagsControl:self deleteTappedForTag: [_tags objectAtIndex:index]];
 }
 
 - (void)tagButtonPressed:(id)sender {
@@ -357,6 +360,10 @@
         
         return YES;
     }
+}
+
+-(void)textFieldDidChange :(UITextField *) textField{
+  [tapDelegate tagsControl:self textDidChange:textField.text];
 }
 
 #pragma mark - other
