@@ -156,12 +156,14 @@
 }
 
 - (void)addTag:(NSString *)tag {
-    for (NSString *oldTag in _tags) {
-        if ([oldTag isEqualToString:tag]) {
-            return;
-        }
-    }
-    
+  
+// Removed to enable duplicate tags
+//    for (NSString *oldTag in _tags) {
+//        if ([oldTag isEqualToString:tag]) {
+//            return;
+//        }
+//    }
+  
     [_tags addObject:tag];
     [self reloadTagSubviews];
     
