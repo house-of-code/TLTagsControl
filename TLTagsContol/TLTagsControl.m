@@ -304,13 +304,13 @@
 #pragma mark - textfield stuff
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    if (textField.text.length > 0) {
-        NSString *tag = textField.text;
-        textField.text = @"";
-        [self addTag:tag];
-    }
-    
-    return YES;
+//    if (textField.text.length > 0) {
+//        NSString *tag = textField.text;
+//        textField.text = @"";
+//        [self addTag:tag];
+//    }
+  
+    return NO;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
