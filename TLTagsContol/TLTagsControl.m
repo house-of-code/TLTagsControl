@@ -215,7 +215,11 @@
     
     
     
-    for (NSString *tag in _tags) {
+    for (NSObject *tagItem in _tags) {
+      
+        //Get the text from the tag
+        NSString* tag = [tapDelegate tagsControl:self titleForTag:tagItem];
+      
         float width = [tag boundingRectWithSize:CGSizeMake(3000,tagInputField_.frame.size.height)
                                         options:NSStringDrawingUsesLineFragmentOrigin
                                      attributes:@{NSFontAttributeName:tagInputField_.font}
@@ -232,7 +236,7 @@
         tagLabel.font = tagInputField_.font;
         labelFrame.size.width = width + 16;
         labelFrame.size.height = tagInputField_.frame.size.height;
-        tagLabel.text = [tapDelegate tagsControl:self titleForTag:tag];
+        tagLabel.text = tag;
         tagLabel.textColor = tagTextColor;
         tagLabel.textAlignment = NSTextAlignmentCenter;
         tagLabel.clipsToBounds = YES;
