@@ -188,8 +188,8 @@
 }
 
 - (void)removeTag:(NSString *)tag {
-  for (NSString *oldTag in _tags) {
-    if ([oldTag isEqualToString:tag]) {
+  for (NSObject *oldTag in _tags) {
+    if ([oldTag isEqual:tag]) {
       [_tags removeObject:oldTag];
       [self reloadTagSubviews];
       return;
