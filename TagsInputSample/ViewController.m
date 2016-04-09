@@ -26,6 +26,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+  
+  _defaultEditingTagControl.tapDelegate = _blueEditingTagControl.tapDelegate = _redEditingTagControl.tapDelegate = _defaultEditingTagControl.tapDelegate = self;
+  
     NSMutableArray *tags = [NSMutableArray arrayWithArray:@[@"A", @"Tag", @"One", @"More", @"Tag", @"And", @"Yet", @"Another", @"One"]];
     _defaultEditingTagControl.tags = [tags mutableCopy];
     _blueEditingTagControl.tags = [tags mutableCopy];
@@ -69,10 +72,10 @@
     
     demoTagsControl = [[TLTagsControl alloc]initWithFrame:CGRectMake(8, 340, self.view.frame.size.width - 16, 36)
                                                   andTags:@[@"These", @"Tags", @"Are", @"Tapable"]
-                                      withTagsControlMode:TLTagsControlModeList];
+                                      withTagsControlMode:TLTagsControlModeList delegate:self];
     
     [demoTagsControl reloadTagSubviews];
-    [demoTagsControl setTapDelegate:self];
+//    [demoTagsControl setTapDelegate:self];
     [self.view addSubview:demoTagsControl];
 }
 
@@ -84,6 +87,11 @@
 #pragma mark - TLTagsControlDelegate
 - (void)tagsControl:(TLTagsControl *)tagsControl tappedAtIndex:(NSInteger)index {
     NSLog(@"Tag \"%@\" was tapped", tagsControl.tags[index]);
+}
+
+- (NSString *)tagsControl:(TLTagsControl *)tagsConrol titleForTag:(NSObject *)item
+{
+  return (NSString *)item;
 }
 
 @end

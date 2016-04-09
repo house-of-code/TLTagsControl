@@ -39,11 +39,12 @@
     return self;
 }
 
-- (id)initWithFrame:(CGRect)frame andTags:(NSArray *)tags withTagsControlMode:(TLTagsControlMode)mode {
+- (id)initWithFrame:(CGRect)frame andTags:(NSArray *)tags withTagsControlMode:(TLTagsControlMode)mode delegate:(NSObject<TLTagsControlDelegate> *)delegate{
     self = [super initWithFrame:frame];
     
     if (self != nil) {
         [self commonInit];
+        self.tapDelegate = delegate;
         [self setTags:[[NSMutableArray alloc]initWithArray:tags]];
         [self setMode:mode];
     }
@@ -231,7 +232,7 @@
         tagLabel.font = tagInputField_.font;
         labelFrame.size.width = width + 16;
         labelFrame.size.height = tagInputField_.frame.size.height;
-        tagLabel.text = tag;
+        tagLabel.text = [tapDelegate tagsControl:self titleForTag:tag];
         tagLabel.textColor = tagTextColor;
         tagLabel.textAlignment = NSTextAlignmentCenter;
         tagLabel.clipsToBounds = YES;
@@ -303,8 +304,8 @@
     [view removeFromSuperview];
 //
     NSInteger index = [tagSubviews_ indexOfObject:view];
-//    [_tags removeObjectAtIndex:index];
-//    [self reloadTagSubviews];
+    [_tags removeObjectAtIndex:index];
+    [self reloadTagSubviews];
   [tapDelegate tagsControl:self deleteTappedForTag: [_tags objectAtIndex:index]];
 }
 
