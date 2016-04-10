@@ -305,11 +305,11 @@
 
 - (void)deleteTagButton:(UIButton *)sender {
     UIView *view = sender.superview;
-    [view removeFromSuperview];
+//    [view removeFromSuperview];
 //
     NSInteger index = [tagSubviews_ indexOfObject:view];
-    [_tags removeObjectAtIndex:index];
-    [self reloadTagSubviews];
+//    [_tags removeObjectAtIndex:index];
+//    [self reloadTagSubviews];
   [tapDelegate tagsControl:self deleteTappedForTag: [_tags objectAtIndex:index]];
 }
 
