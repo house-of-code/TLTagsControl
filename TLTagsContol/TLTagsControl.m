@@ -83,7 +83,7 @@
     tagInputField_.placeholder = @"tag";
     tagInputField_.autocorrectionType = UITextAutocorrectionTypeNo;
     [tagInputField_ addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-
+    self.keyboardType = UIKeyboardTypeDefault;
     
     if (_mode == TLTagsControlModeEdit) {
         [self addSubview:tagInputField_];
@@ -369,6 +369,12 @@
 
 -(void)textFieldDidChange :(UITextField *) textField{
   [tapDelegate tagsControl:self textDidChange:textField.text];
+}
+
+- (void) setKeyboardType:(UIKeyboardType)keyboardType
+{
+    _keyboardType = keyboardType;
+    tagInputField_.keyboardType = _keyboardType;
 }
 
 #pragma mark - other

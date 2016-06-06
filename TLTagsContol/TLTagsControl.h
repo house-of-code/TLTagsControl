@@ -39,7 +39,7 @@ typedef NS_ENUM(NSUInteger, TLTagsControlMode) {
 @property (nonatomic, strong) UIColor *tagsDeleteButtonColor;
 @property (nonatomic, strong) NSString *tagPlaceholder;
 @property (nonatomic) TLTagsControlMode mode;
-
+@property (nonatomic, assign) UIKeyboardType keyboardType;
 @property (assign, nonatomic) id<TLTagsControlDelegate> tapDelegate;
 
 - (id)initWithFrame:(CGRect)frame andTags:(NSArray *)tags withTagsControlMode:(TLTagsControlMode)mode delegate:(NSObject<TLTagsControlDelegate> *)delegate;
