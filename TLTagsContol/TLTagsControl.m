@@ -159,13 +159,13 @@
 }
 
 - (void)addTag:(NSString *)tag {
-  
-// Removed to enable duplicate tags
-//    for (NSString *oldTag in _tags) {
-//        if ([oldTag isEqualToString:tag]) {
-//            return;
-//        }
-//    }
+    
+    // Removed to enable duplicate tags
+    //    for (NSString *oldTag in _tags) {
+    //        if ([oldTag isEqualToString:tag]) {
+    //            return;
+    //        }
+    //    }
     tagInputField_.text = @"";
     [_tags addObject:tag];
     [self reloadTagSubviews];
@@ -188,14 +188,14 @@
 }
 
 - (void)removeTag:(NSString *)tag {
-  for (NSObject *oldTag in _tags) {
-    if ([oldTag isEqual:tag]) {
-      [_tags removeObject:oldTag];
-      [self reloadTagSubviews];
-      return;
+    for (NSObject *oldTag in _tags) {
+        if ([oldTag isEqual:tag]) {
+            [_tags removeObject:oldTag];
+            [self reloadTagSubviews];
+            return;
+        }
     }
-  }
- 
+    
 }
 
 - (void)reloadTagSubviews {
@@ -216,10 +216,10 @@
     
     
     for (NSObject *tagItem in _tags) {
-      
+        
         //Get the text from the tag
         NSString* tag = [tapDelegate tagsControl:self titleForTag:tagItem];
-      
+        
         float width = [tag boundingRectWithSize:CGSizeMake(3000,tagInputField_.frame.size.height)
                                         options:NSStringDrawingUsesLineFragmentOrigin
                                      attributes:@{NSFontAttributeName:tagInputField_.font}
@@ -305,12 +305,12 @@
 
 - (void)deleteTagButton:(UIButton *)sender {
     UIView *view = sender.superview;
-//    [view removeFromSuperview];
-//
+    //    [view removeFromSuperview];
+    //
     NSInteger index = [tagSubviews_ indexOfObject:view];
-//    [_tags removeObjectAtIndex:index];
-//    [self reloadTagSubviews];
-  [tapDelegate tagsControl:self deleteTappedForTag: [_tags objectAtIndex:index]];
+    //    [_tags removeObjectAtIndex:index];
+    //    [self reloadTagSubviews];
+    [tapDelegate tagsControl:self deleteTappedForTag: [_tags objectAtIndex:index]];
 }
 
 - (void)tagButtonPressed:(id)sender {
@@ -334,11 +334,14 @@
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *resultingString;
     NSString *text = textField.text;
+    NSLog(@"NEW TEXT %@", string);
     
-    
-    if (string.length == 1 && [string rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
-        return NO;
-    } else {
+    //if (string.length == 1 && [string rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location != NSNotFound) {
+    //NSLog(@"Not available");//
+    //        return NO;
+    //  } else
+    {
+        
         if (!text || [text isEqualToString:@""]) {
             resultingString = string;
         } else {
@@ -350,25 +353,25 @@
                                                                       withString:string];
         }
         
-        NSArray *components = [resultingString componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
-        
-        if (components.count > 2) {
-            for (NSString *component in components) {
-                if (component.length > 0 && [component rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location == NSNotFound) {
-                    [self addTag:component];
-                    break;
-                }
-            }
-            
-            return NO;
-        }
+        //        NSArray *components = [resultingString componentsSeparatedByCharactersInSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]];
+        //
+        //        if (components.count > 2) {
+        //            for (NSString *component in components) {
+        //                if (component.length > 0 && [component rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location == NSNotFound) {
+        //                    [self addTag:component];
+        //                    break;
+        //                }
+        //            }
+        //
+        //            return NO;
+        //        }
         
         return YES;
     }
 }
 
 -(void)textFieldDidChange :(UITextField *) textField{
-  [tapDelegate tagsControl:self textDidChange:textField.text];
+    [tapDelegate tagsControl:self textDidChange:textField.text];
 }
 
 - (void) setKeyboardType:(UIKeyboardType)keyboardType
