@@ -380,6 +380,12 @@
     tagInputField_.keyboardType = _keyboardType;
 }
 
+- (void) setAutocapitalizationType:(UITextAutocapitalizationType)autocapitalizationType
+{
+    _autocapitalizationType = autocapitalizationType;
+    tagInputField_.autocapitalizationType = _autocapitalizationType;
+}
+
 #pragma mark - other
 
 - (void)setMode:(TLTagsControlMode)mode {

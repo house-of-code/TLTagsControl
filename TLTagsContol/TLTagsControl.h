@@ -40,6 +40,7 @@ typedef NS_ENUM(NSUInteger, TLTagsControlMode) {
 @property (nonatomic, strong) NSString *tagPlaceholder;
 @property (nonatomic) TLTagsControlMode mode;
 @property (nonatomic, assign) UIKeyboardType keyboardType;
+@property (nonatomic, assign) UITextAutocapitalizationType autocapitalizationType;
 @property (assign, nonatomic) id<TLTagsControlDelegate> tapDelegate;
 
 - (id)initWithFrame:(CGRect)frame andTags:(NSArray *)tags withTagsControlMode:(TLTagsControlMode)mode delegate:(NSObject<TLTagsControlDelegate> *)delegate;
